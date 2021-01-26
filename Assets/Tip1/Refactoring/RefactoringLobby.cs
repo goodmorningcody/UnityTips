@@ -12,21 +12,22 @@ namespace RefactoringSingletonDemo
 
         void Awake()
         {
-            coinText.text = string.Format("{0}", Refactoring3UserInfoManager.Coin);
+            coinText.text = string.Format("{0}개", RefactoringUserInfoManager.Coin);
         }
 
         public void OnClickedNormalDungeon()
         {
-            SceneManager.LoadScene("Game");
+            
             selectedDungenType = DungenType.Normal;
             SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.LoadScene("Game");
         }
 
         public void OnClickedEventDungeon()
         {
-            SceneManager.LoadScene("Game");
             selectedDungenType = DungenType.Event;
             SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.LoadScene("Game");
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

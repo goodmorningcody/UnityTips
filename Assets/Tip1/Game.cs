@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using RefactoringSingletonDemo;
 
 namespace SingletonDemo
 {
@@ -15,19 +16,19 @@ namespace SingletonDemo
 
         public void OnClickedGainCoin()
         {
-            PlayManager.GetInstance().GainCoin();
+            RefactoringStaticPlayManager.GainCoin();
             UpdateCoin();
         }
 
         public void OnClickedLooseCoin()
         {
-            PlayManager.GetInstance().LooseCoin();
+            RefactoringStaticPlayManager.LooseCoin();
             UpdateCoin();
         }
 
         private void UpdateCoin()
         {
-            coinText.text = string.Format("{0}", PlayManager.GetInstance().coin);
+            coinText.text = string.Format("{0}", RefactoringStaticPlayManager.Coin);
         }
     }
 }

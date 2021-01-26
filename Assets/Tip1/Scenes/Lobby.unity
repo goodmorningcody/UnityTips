@@ -492,7 +492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 802332019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1de95962cc7a945819f0a1d0e60cb40c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3478338f8a09f492b9a3e45dda73ad56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 741384794}
@@ -801,7 +801,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 802332024}
-        m_TargetAssemblyTypeName: SingletonDemo.Lobby, Assembly-CSharp
+        m_TargetAssemblyTypeName: RefactoringSingletonDemo.RefactoringLobby, Assembly-CSharp
         m_MethodName: OnClickedNormalDungeon
         m_Mode: 1
         m_Arguments:
@@ -933,7 +933,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 802332024}
-        m_TargetAssemblyTypeName: SingletonDemo.Lobby, Assembly-CSharp
+        m_TargetAssemblyTypeName: RefactoringSingletonDemo.RefactoringLobby, Assembly-CSharp
         m_MethodName: OnClickedEventDungeon
         m_Mode: 1
         m_Arguments:

@@ -10,11 +10,12 @@ namespace RefactoringSingletonDemo
         [SerializeField] private Text coinText = null;
         private DungenType playingDungenType;
         private int CoinChangeAmount => playingDungenType == DungenType.Normal ? 1 : Random.Range(1, 100);
+        private string CointCountText => string.Format("{0}개", RefactoringUserInfoManager.Coin);
 
         public void OnStartGame(DungenType dungenType)
         {
             playingDungenType = dungenType;
-            coinText.text = string.Format("{0}개", Refactoring3UserInfoManager.Coin);
+            coinText.text = CointCountText;
         }
 
         public void OnClickedExit()
@@ -34,8 +35,8 @@ namespace RefactoringSingletonDemo
 
         private void UpdateCoin(int coinAmount)
         {
-            Refactoring3UserInfoManager.UpdateCoin(coinAmount);
-            coinText.text = string.Format("{0}", PlayManager.GetInstance().coin);
+            RefactoringUserInfoManager.UpdateCoin(coinAmount);
+            coinText.text = CointCountText;
         }
     }
 }

@@ -206,7 +206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 857203313}
-        m_TargetAssemblyTypeName: SingletonDemo.Game, Assembly-CSharp
+        m_TargetAssemblyTypeName: RefactoringSingletonDemo.RefactoringGame, Assembly-CSharp
         m_MethodName: OnClickedLooseCoin
         m_Mode: 1
         m_Arguments:
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 857203308}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5125494959a2b483b87e92872b9b25c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 105368d73ebda412d833dff8e11bd146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 818827343}
@@ -855,7 +855,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 857203313}
-        m_TargetAssemblyTypeName: SingletonDemo.Game, Assembly-CSharp
+        m_TargetAssemblyTypeName: RefactoringSingletonDemo.RefactoringGame, Assembly-CSharp
         m_MethodName: OnClickedGainCoin
         m_Mode: 1
         m_Arguments:
@@ -1145,7 +1145,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 857203313}
-        m_TargetAssemblyTypeName: SingletonDemo.Game, Assembly-CSharp
+        m_TargetAssemblyTypeName: RefactoringSingletonDemo.RefactoringGame, Assembly-CSharp
         m_MethodName: OnClickedExit
         m_Mode: 1
         m_Arguments:

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using RefactoringSingletonDemo;
 
 namespace SingletonDemo
 {
@@ -10,19 +11,19 @@ namespace SingletonDemo
 
         void Awake()
         {
-            coinText.text = string.Format("{0}", PlayManager.GetInstance().coin);
+            coinText.text = string.Format("{0}", RefactoringStaticPlayManager.Coin);
         }
 
         public void OnClickedNormalDungeon()
         {
             SceneManager.LoadScene("Game");
-            PlayManager.GetInstance().dungenType = DungenType.Normal;
+            RefactoringStaticPlayManager.dungenType = DungenType.Normal;
         }
 
         public void OnClickedEventDungeon()
         {
             SceneManager.LoadScene("Game");
-            PlayManager.GetInstance().dungenType = DungenType.Event;
+            RefactoringStaticPlayManager.dungenType = DungenType.Event;
         }
     }
 }
