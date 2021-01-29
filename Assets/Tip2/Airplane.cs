@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-
+using UnityEngine;
+using System;
+using UnityEngine.Events;
 namespace ReferenceAndEventDemo
 {
     // 1. 비행기 오브젝트 계층
@@ -19,7 +20,8 @@ namespace ReferenceAndEventDemo
     //              - StateText에 "엔진 ERROR" 표시
     //              - 엔진이 정상인 엔진은 Engine.State.OFF로 변경
     //              - ToggleButton은 "엔진 RESET"으로 변경
-    //          (2) 엔진 모두 정싱아면
+    //              - (+ 만약 다른 엔진이 checking 중인 상태면 checking 멈춤)
+    //          (2) 엔진 모두 정상이면
     //              - StateText에 "엔진 ON" 표시
     //              - ToggleButton은 "엔진 OFF"로 변경
     //      3-1) 엔진 OFF ToggleButton 버튼 클릭하면
@@ -32,5 +34,85 @@ namespace ReferenceAndEventDemo
     public class Airplane : MonoBehaviour
     {
         [SerializeField] private Engine[] engines = null;
+        [SerializeField] private Cockpit cockpit;
+
+        private int engineCheckCountLeft;
+
+        public event Action OnDetectEngineFlawEvent; //event when an engine flaw is detected
+        public event Action OnEnginesReadyEvent; //event when all engines are ready
+        public event Action OnTurningOffEngineFailedEvent; //event when turning off engine failed
+        public event Action OnEnginesOffEvent; //event when all engines are turned off
+
+        private void Start()
+        {
+            //register engine Check & off event
+            foreach (Engine engine in engines)
+            {
+                engine.OnEngineCheck += HandleEngineCheck;
+                engine.OnEngineOff += HandleEngineOff;
+            }
+        }
+
+        private void InitializeEngineCheckCount()
+        {
+            engineCheckCountLeft = engines.Length;
+        }
+
+        public void StartEngineCheck()
+        {
+            cockpit.ChangeStateText("엔진 Checking");
+
+            InitializeEngineCheckCount();
+
+            foreach (var e in engines)
+            {
+                e.CheckEngine();
+            }
+        }
+
+        public void TurnOffEngines()
+        {
+            InitializeEngineCheckCount();
+
+            foreach (var e in engines)
+            {
+                e.TurnOffEngine();
+            }
+        }
+
+        public void ResetEngines()
+        {
+            TurnOffEngines();
+        }
+
+        private void HandleEngineCheck(Engine engine, Engine.State state)
+        {
+            if (state == Engine.State.SomethingWrong)
+            {
+                Debug.Log("ERROR: Engine flaw is found from " + engine.gameObject.name);
+                OnDetectEngineFlawEvent.Invoke();
+                return;
+            }
+
+            if (--engineCheckCountLeft == 0)
+            {
+                OnEnginesReadyEvent?.Invoke();
+            }
+        }
+
+        private void HandleEngineOff(Engine engine, Engine.State state)
+        {
+            if (state != Engine.State.Off)
+            {
+                Debug.Log("ERROR: Failed on turning off Engine : " + engine.gameObject.name);
+                OnTurningOffEngineFailedEvent?.Invoke();
+                return;
+            }
+
+            if (--engineCheckCountLeft == 0)
+            {
+                OnEnginesOffEvent?.Invoke();
+            }
+        }
     }
 }
