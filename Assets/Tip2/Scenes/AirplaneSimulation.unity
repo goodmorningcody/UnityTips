@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83531e5db1bf84ac2b155ffd106ddd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleButton: {fileID: 1928790186}
+  toggleButton: {fileID: 0}
   stateText: {fileID: 1775778624}
 --- !u!1 &153871884
 GameObject:
@@ -308,7 +308,6 @@ MonoBehaviour:
   engines:
   - {fileID: 1830069298}
   - {fileID: 1908625130}
-  cockpit: {fileID: 47163684}
 --- !u!1 &216049135
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +642,7 @@ GameObject:
   - component: {fileID: 1830069296}
   - component: {fileID: 1830069298}
   m_Layer: 5
-  m_Name: EngineL
+  m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -718,7 +717,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1655d7b808948afb8e6ecb895e7e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
 --- !u!1 &1899085183
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +809,7 @@ GameObject:
   - component: {fileID: 1908625128}
   - component: {fileID: 1908625130}
   m_Layer: 5
-  m_Name: EngineR
+  m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -886,7 +884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1655d7b808948afb8e6ecb895e7e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
 --- !u!1 &1928790184
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,19 +966,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1928790187}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1928790189}
-        m_TargetAssemblyTypeName: ReferenceAndEventDemo.ToggleButton, Assembly-CSharp
-        m_MethodName: ToggleButtonEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1928790187
 MonoBehaviour:
   m_ObjectHideFlags: 0
