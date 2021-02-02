@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,42 +40,36 @@ namespace ReferenceAndEventDemo
         bool IsOff => engines.FindAll((engine) => engine.IsOff).Count == engines.Count;
         bool IsOn => engines.FindAll((engine) => engine.IsOn).Count == engines.Count;
 
-        private void OnChangedEngine(EngineState engineState)
-        {
-            if ( engineState == EngineState.SomethingWrong )
-            {
-                engines.ForEach((engine) => engine.TurnOff());
-                cockpit.OccurredError();
-            }
-            else if ( engineState == EngineState.Checking )
-            {
-                cockpit.Checking();
-            }
-            
-            if ( IsOff )
-            {
-                cockpit.TurnedOff();
-            }
-            else if ( IsOn )
-            {
-                cockpit.TurnedOn();
-            }
-        }
-
         public void OnEventHandle(Event param)
         {
-            switch(param)
+            if ( param is TurnOnEvent )
             {
-                case TurnOnEvent _:
-                    engines.ForEach((engine) => engine.TurnOn());
-                    break;
-                case TurnOffEvent _:
-                case ResetEvent _:
+                engines.ForEach((engine) => engine.TurnOn());
+            }
+            else if ( param is TurnOffEvent || param is ResetEvent )
+            {
+                engines.ForEach((engine) => engine.TurnOn());
+            }
+            else if ( param is ChangedEngineEvent changedEngine )
+            {
+                var engineState = changedEngine.EngineState;
+                if ( engineState == EngineState.SomethingWrong )
+                {
                     engines.ForEach((engine) => engine.TurnOff());
-                    break;
-                case ChangedEngineEvent changedEngine:
-                    OnChangedEngine(changedEngine.EngineState);
-                    break;
+                    cockpit.OccurredError();
+                }
+                else if ( engineState == EngineState.Checking )
+                {
+                    cockpit.Checking();
+                }
+                else if ( IsOff )
+                {
+                    cockpit.TurnedOff();
+                }
+                else if ( IsOn )
+                {
+                    cockpit.TurnedOn();
+                }
             }
         }
     }

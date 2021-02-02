@@ -10,7 +10,9 @@ namespace ReferenceAndEventDemo
 
         void Start()
         {
-            toggleButton.SetListener(() => this.Emit(new TurnOnEvent()));
+            toggleButton.SetListener(() => {
+                SendMessageUpwards("OnEventHandle", new TurnOnEvent());
+            });
         }
 
         public void Checking()
