@@ -38,10 +38,10 @@ namespace ReferenceAndEventDemo
 
         private int engineCheckCountLeft;
 
-        public event Action OnDetectEngineFlawEvent; //event when an engine flaw is detected
-        public event Action OnEnginesReadyEvent; //event when all engines are ready
-        public event Action OnTurningOffEngineFailedEvent; //event when turning off engine failed
-        public event Action OnEnginesOffEvent; //event when all engines are turned off
+        public Action OnDetectEngineFlawEvent; //event when an engine flaw is detected
+        public Action OnEnginesReadyEvent; //event when all engines are ready
+        public Action OnTurningOffEngineFailedEvent; //event when turning off engine failed
+        public Action OnEnginesOffEvent; //event when all engines are turned off
 
         private void Start()
         {
@@ -49,15 +49,10 @@ namespace ReferenceAndEventDemo
             foreach (Engine engine in engines)
             {
                 engine.OnEngineCheck += HandleEngineCheck;
+                //engine에서 handleDetectFalwEvent를 여기서 등록을 하면 getComponentinParent 안써도됨
                 engine.OnEngineOff += HandleEngineOff;
             }
         }
-
-        private void InitializeEngineCheckCount()
-        {
-            engineCheckCountLeft = engines.Length;
-        }
-
         public void StartEngineCheck()
         {
             cockpit.ChangeStateText("엔진 Checking");
@@ -68,6 +63,10 @@ namespace ReferenceAndEventDemo
             {
                 e.CheckEngine();
             }
+        }
+        private void InitializeEngineCheckCount()
+        {
+            engineCheckCountLeft = engines.Length;
         }
 
         public void TurnOffEngines()

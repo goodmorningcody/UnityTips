@@ -16,6 +16,7 @@ namespace ReferenceAndEventDemo
             airplane.OnDetectEngineFlawEvent += HandleDetectEngineFlawEvent;
             airplane.OnEnginesReadyEvent += HandleEnginesReadyEvent;
             airplane.OnEnginesOffEvent += HandleEnginesOffEvent;
+            //여기서 구현한것은 delegate (event 가 아니다)
         }
         private void HandleDetectEngineFlawEvent()
         {
