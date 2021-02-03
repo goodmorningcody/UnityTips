@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 201034890}
   - component: {fileID: 201034889}
   - component: {fileID: 201034888}
-  - component: {fileID: 201034892}
   m_Layer: 0
   m_Name: FishingFloat
   m_TagString: Untagged
@@ -265,18 +264,6 @@ Transform:
   m_Father: {fileID: 174467277}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &201034892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201034887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4faccc8b350cb4e8a81cf7522aa49551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &216049135
 GameObject:
   m_ObjectHideFlags: 0
