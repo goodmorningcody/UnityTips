@@ -4,20 +4,39 @@ using UnityEngine;
 
 namespace OOPWithInterface
 {
-    public class Fishing : MonoBehaviour
+    public interface IFishStorage
     {
-        public enum State
-        {
-            Idle,
-            Caught
-        }
+        int TotalCount { get; }
+        Fish GetBestFish();
+    }
 
-        private State state = State.Idle;
+    public class Fishing : MonoBehaviour, IFishStorage
+    {
         private Fish catchingFish = null;
         private List<Fish> caughtFish = new List<Fish>();
-        private bool IsCatched => catchingFish == null || Random.Range(0, 10) > 5;
+        private bool IsCatched => catchingFish != null && Random.Range(0, 10) > 5;
         [SerializeField] private World world = null;
         [SerializeField] private UI ui = null;
+        public int TotalCount => caughtFish.Count;
+
+        public delegate void OnSnatchButtonClicked();
+        public delegate void OnRefreshedFish();
+
+
+        public int WoorukCount => throw new System.NotImplementedException();
+
+        public Fish GetBestFish()
+        {
+            Fish bestFish = null;
+            foreach(var fish in caughtFish )
+            {
+                if ( bestFish == null || bestFish.Length < fish.Length )
+                {
+                    bestFish = fish;
+                }
+            }
+            return bestFish;
+        }
 
         private void Start()
         {
@@ -31,12 +50,13 @@ namespace OOPWithInterface
             world.Snatched();
             if ( IsCatched )
             {
-                Debug.LogError("물고기 없음");
+                caughtFish.Add(catchingFish);
+                Debug.LogError(string.Format("{0}({1}cm)를 잡음", catchingFish.Name, catchingFish.Length));
+                ui.Refresh(this);
             }
             else
             {
-                caughtFish.Add(catchingFish);
-                Debug.LogError(string.Format("{0}({1}cm)를 잡음", catchingFish.Name, catchingFish.Length));
+                Debug.LogError("물고기 없거나 혹은 놓쳤음");
             }
             StartCoroutine(StartFishing());
         }

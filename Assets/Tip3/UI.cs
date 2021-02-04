@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ namespace OOPWithInterface
     {
         [SerializeField] private AquariumUI aquariumUI = null;
         [SerializeField] private Button snatchButton = null;
+        [SerializeField] private Button clearButton = null;
 
         public void StartSnatchListener(Action onSnatch)
         {
@@ -15,9 +17,9 @@ namespace OOPWithInterface
             snatchButton.onClick.AddListener(() => onSnatch());
         }
 
-        public void Refresh()
+        public void Refresh(IFishStorage fishing)
         {
-            aquariumUI.Refresh();
+            aquariumUI.Refresh(fishing);
         }
     }
 }
