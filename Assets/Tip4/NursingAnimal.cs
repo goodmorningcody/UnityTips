@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,22 +12,21 @@ namespace Hunting
     // 3. 출산 후 랜덤한 시간에 수유
     // 4. 일정 시간 보살핌
     // 5. 독립 후 다시 1번
+
+    public class NursingBaby
+    {
+    }
+
     public class NursingAnimal : MonoBehaviour
     {
-        [SerializeField] private float pregnantInterval = 5f;
         private Text stateText = null;
-        private int childrenCount = 0;
         private Coroutine coroutine = null;
+        public Queue<NursingBaby> nursingBabies = new Queue<NursingBaby>();
 
         void Awake()
         {
             stateText = GetComponentInChildren<Text>();
             stateText.text = "";
-        }
-
-        void OnEnable()
-        {
-            coroutine = StartCoroutine(GiveBirth());
         }
 
         void OnDisable()
@@ -35,25 +35,30 @@ namespace Hunting
             coroutine = null;
         }
 
-        IEnumerator GiveBirth()
+
+
+        public void RequestNursing(NursingBaby baby)
+        {
+            nursingBabies.Enqueue(baby);
+            if ( coroutine == null )
+            {
+                StartCoroutine(Nursing());
+            }
+        }
+
+        IEnumerator Nursing()
         {
             while(true)
             {
-                childrenCount = 0;
-                yield return new WaitForSeconds(pregnantInterval);
-                childrenCount = Random.Range(1, 5);
-                stateText.text = string.Format("{0}마리 출산.", childrenCount);
-                yield return Nursing();
-                yield return new WaitForSeconds(5f);
-                stateText.text = string.Format("모두 출가");
-            }
-        }
-        IEnumerator Nursing()
-        {
-            for( var i = 0; i<childrenCount; ++i )
-            {
+                if ( nursingBabies.Count == 0 )
+                {
+                    coroutine = null;
+                    break;
+                }
+                stateText.text = "모유 수유 시작.";
                 yield return new WaitForSeconds(Random.Range(1f, 2f));
-                stateText.text = string.Format("{0}번 모유 수유.", i);
+                stateText.text = "모유 수유 끝";
+                nursingBabies.Dequeue();
             }
         }
     }

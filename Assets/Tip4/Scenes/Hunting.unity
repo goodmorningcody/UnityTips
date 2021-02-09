@@ -345,6 +345,9 @@ GameObject:
   - component: {fileID: 818944111}
   - component: {fileID: 818944113}
   - component: {fileID: 818944112}
+  - component: {fileID: 818944115}
+  - component: {fileID: 818944114}
+  - component: {fileID: 818944116}
   m_Layer: 5
   m_Name: Mole
   m_TagString: Untagged
@@ -410,6 +413,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818944110}
   m_CullTransparentMesh: 0
+--- !u!114 &818944114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818944110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26dfb055a45b4496ad26977a8773334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &818944115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818944110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a1b43f44d1f45ed99cb124f514fb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breathInterval: 3
+--- !u!114 &818944116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818944110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cddef5c410ef4fc5ada9c4be1ae9626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pregnantInterval: 5
 --- !u!1 &924378807
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +462,9 @@ GameObject:
   - component: {fileID: 924378808}
   - component: {fileID: 924378810}
   - component: {fileID: 924378809}
+  - component: {fileID: 924378812}
   - component: {fileID: 924378811}
+  - component: {fileID: 924378813}
   m_Layer: 5
   m_Name: Duck
   m_TagString: Untagged
@@ -500,6 +543,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layEggInterval: 5
+--- !u!114 &924378812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924378807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a1b43f44d1f45ed99cb124f514fb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breathInterval: 3
+--- !u!114 &924378813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924378807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c9fddab8a3f404ca19101e094c1055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1048481580
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +865,10 @@ GameObject:
   - component: {fileID: 1737463077}
   - component: {fileID: 1737463079}
   - component: {fileID: 1737463078}
+  - component: {fileID: 1737463081}
+  - component: {fileID: 1737463080}
+  - component: {fileID: 1737463082}
+  - component: {fileID: 1737463083}
   m_Layer: 5
   m_Name: DuckMole
   m_TagString: Untagged
@@ -862,6 +934,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1737463076}
   m_CullTransparentMesh: 0
+--- !u!114 &1737463080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737463076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a1b43f44d1f45ed99cb124f514fb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breathInterval: 3
+--- !u!114 &1737463081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737463076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26dfb055a45b4496ad26977a8773334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1737463082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737463076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f704621b8e5524568bdf5a6d66ad53d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layEggInterval: 5
+--- !u!114 &1737463083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737463076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c9fddab8a3f404ca19101e094c1055, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1925109611
 GameObject:
   m_ObjectHideFlags: 0

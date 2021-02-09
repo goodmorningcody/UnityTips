@@ -32,13 +32,16 @@ namespace Hunting
                 eggCount = 0;
                 yield return new WaitForSeconds(layEggInterval);
                 eggCount = Random.Range(5, 10);
-                stateText.text = string.Format("{0}개의 알을 낳고, 품음", eggCount);
-                yield return new WaitForSeconds(10f);
-                stateText.text = "알이 모두 부화함";
-                yield return new WaitForSeconds(2f);
-                stateText.text = "새끼 새를 보살핌";
-                yield return new WaitForSeconds(2f);
-                stateText.text = "새끼 새 출가";
+                stateText.text = string.Format("{0}개의 알을 낳음", eggCount);
+                var eggIncubateAnimal = GetComponent<EggIncubateAnimal>();
+                eggIncubateAnimal.RequestIncubate();
+                if ( GetComponent<NursingAnimal>() is NursingAnimal nursingAnimal )
+                {
+                    for( var i = 0; i<eggCount; ++i )
+                    {
+                        nursingAnimal.RequestNursing(new NursingBaby());
+                    }
+                }
             }
         }
     }
