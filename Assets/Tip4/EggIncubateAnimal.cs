@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ReferenceAndEventDemo;
 
 namespace Hunting
 {
@@ -17,6 +17,7 @@ namespace Hunting
     {
         private Text stateText = null;
         private Coroutine coroutine = null;
+        public bool IsIncubating => coroutine != null;
 
         void Awake()
         {
@@ -26,22 +27,30 @@ namespace Hunting
 
         void OnDisable()
         {
-            StopCoroutine(coroutine);
-            coroutine = null;
+            if ( coroutine != null )
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
         }
 
 
 
-        public void RequestIncubate()
+        public void RequestIncubate(int eggsCount)
         {
-            StartCoroutine(Incubate());
+            if ( coroutine == null )
+            {
+                coroutine = StartCoroutine(Incubate(eggsCount));
+            }
         }
 
-        IEnumerator Incubate()
+        IEnumerator Incubate(int eggsCount)
         {
             stateText.text = "알을 품기 시작함";
             yield return new WaitForSeconds(3f);
             stateText.text = "알이 모두 부화함";
+            this.Emit(new IncubatedEggsEvent(eggsCount));
+            coroutine = null;
         }
     }
 }

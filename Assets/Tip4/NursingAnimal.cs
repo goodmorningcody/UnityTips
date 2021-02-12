@@ -22,6 +22,7 @@ namespace Hunting
         private Text stateText = null;
         private Coroutine coroutine = null;
         public Queue<NursingBaby> nursingBabies = new Queue<NursingBaby>();
+        public bool IsNursing => coroutine != null;
 
         void Awake()
         {
@@ -31,18 +32,19 @@ namespace Hunting
 
         void OnDisable()
         {
-            StopCoroutine(coroutine);
-            coroutine = null;
+            if ( coroutine != null )
+            {
+                StopCoroutine(coroutine);
+                coroutine = null;
+            }
         }
-
-
 
         public void RequestNursing(NursingBaby baby)
         {
             nursingBabies.Enqueue(baby);
             if ( coroutine == null )
             {
-                StartCoroutine(Nursing());
+                coroutine = StartCoroutine(Nursing());
             }
         }
 
