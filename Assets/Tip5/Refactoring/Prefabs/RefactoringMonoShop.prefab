@@ -121,10 +121,10 @@ GameObject:
   - component: {fileID: 1631847134605496727}
   - component: {fileID: 1631847134605496725}
   - component: {fileID: 1631847134605496726}
-  - component: {fileID: 1631847134605496724}
   - component: {fileID: 1601483003570460991}
+  - component: {fileID: 3161718756686912591}
   m_Layer: 5
-  m_Name: MonoShop
+  m_Name: RefactoringMonoShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,19 +189,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1631847134605496724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631847134605496720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 194279a3e788e47cf80d94b565f5576c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopTitle: {fileID: 1631847133970106311}
 --- !u!114 &1601483003570460991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +209,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &3161718756686912591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631847134605496720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c004e0421bec44305a9216ea427288e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopTitle: {fileID: 1631847133970106311}
 --- !u!1 &1631847135215285395
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,8 +342,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1631847134605496724}
-        m_TargetAssemblyTypeName: OOPWithGeneric.MonoShop, Assembly-CSharp
+      - m_Target: {fileID: 3161718756686912591}
+        m_TargetAssemblyTypeName: OOPWithGeneric.RefactoringMonoShop, Assembly-CSharp
         m_MethodName: OnClickedClose
         m_Mode: 1
         m_Arguments:

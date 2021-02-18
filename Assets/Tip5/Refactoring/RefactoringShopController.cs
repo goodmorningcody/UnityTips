@@ -2,23 +2,23 @@
 
 namespace OOPWithGeneric
 {
-    public class ShopController : MonoBehaviour
+    public class RefactoringShopController : MonoBehaviour
     {
-        [SerializeField] private MonoShop monoShopPrefab = null;
+        [SerializeField] private RefactoringMonoShop monoShopPrefab = null;
 
         public void OnClickedFishingRodShop()
         {
-            var monoShop = Instantiate<MonoShop>(monoShopPrefab, transform);
+            var monoShop = Instantiate<RefactoringMonoShop>(monoShopPrefab, transform);
             monoShop.Init<FishingRodShopModel>();
         }
         public void OnClickedFishingLineShop()
         {
-            var monoShop = Instantiate<MonoShop>(monoShopPrefab, transform);
+            var monoShop = Instantiate<RefactoringMonoShop>(monoShopPrefab, transform);
             monoShop.Init<FishingLineShopModel>();
         }
         public void OnClickedFishingWheelShop()
         {
-            var monoShop = Instantiate<MonoShop>(monoShopPrefab, transform);
+            var monoShop = Instantiate<RefactoringMonoShop>(monoShopPrefab, transform);
             monoShop.Init<FishingWheelShopModel>();
         }
     }

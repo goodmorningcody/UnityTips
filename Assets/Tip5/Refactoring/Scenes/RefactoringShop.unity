@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 689600618}
   - component: {fileID: 689600619}
-  - component: {fileID: 689600615}
+  - component: {fileID: 689600620}
   m_Layer: 5
   m_Name: ShopController
   m_TagString: Untagged
@@ -141,20 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &689600615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689600614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4771fadc88445229e390976de23c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monoShopPrefab: {fileID: 1631847134605496724, guid: 742a8e83f19774322bea239699da1052,
-    type: 3}
 --- !u!224 &689600618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -203,6 +189,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &689600620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689600614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19dff3aa4f4243ac89a25c68219d47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monoShopPrefab: {fileID: 3161718756686912591, guid: 34adabec6f2264307a18deef1358f4c7,
+    type: 3}
 --- !u!1 &1161766141
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 689600615}
+      - m_Target: {fileID: 689600620}
         m_TargetAssemblyTypeName: OOPWithGeneric.ShopController, Assembly-CSharp
         m_MethodName: OnClickedFishingWheelShop
         m_Mode: 1
@@ -864,7 +864,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 689600615}
+      - m_Target: {fileID: 689600620}
         m_TargetAssemblyTypeName: OOPWithGeneric.ShopController, Assembly-CSharp
         m_MethodName: OnClickedFishingLineShop
         m_Mode: 1
@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 689600615}
+      - m_Target: {fileID: 689600620}
         m_TargetAssemblyTypeName: OOPWithGeneric.ShopController, Assembly-CSharp
         m_MethodName: OnClickedFishingRodShop
         m_Mode: 1

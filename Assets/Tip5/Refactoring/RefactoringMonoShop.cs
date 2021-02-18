@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace OOPWithGeneric
 {
-    public class MonoShop : MonoBehaviour
+    public class RefactoringMonoShop : MonoBehaviour
     {
         [SerializeField] private Text shopTitle = null;
 
