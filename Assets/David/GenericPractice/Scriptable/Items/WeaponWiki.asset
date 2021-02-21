@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77aa590e91ec65a479c883f7913a326a, type: 3}
+  m_Name: WeaponWiki
+  m_EditorClassIdentifier: 
+  swords:
+  - {fileID: 11400000, guid: 46707f8a26de80842a766feb3728ea55, type: 2}
+  - {fileID: 11400000, guid: 24b81d036f0a05a438f3e2551a4fe629, type: 2}
+  - {fileID: 11400000, guid: e1bd2e23061848341b1f99e625e88fc4, type: 2}
+  bows:
+  - {fileID: 11400000, guid: 758e8702f8773c54f9da4823a654896e, type: 2}
+  - {fileID: 11400000, guid: ba5dafc3e7243da46904d36388970f01, type: 2}
+  axes:
+  - {fileID: 11400000, guid: 9220015bb66a8894fbce0373870cf531, type: 2}
+  - {fileID: 11400000, guid: ac1a5a207fa14e84898825ffd5d94425, type: 2}
+  - {fileID: 11400000, guid: 189958b7e93103f4e8d883bd84fe8caa, type: 2}
+  wands:
+  - {fileID: 11400000, guid: 42fe660d4465cd140ad1692725f31ea7, type: 2}
+  - {fileID: 11400000, guid: 18fad22163058f343ad60197e2759a8e, type: 2}
+  - {fileID: 11400000, guid: caaebdcfeca1d6442aa9c3905f0a5f95, type: 2}
+  - {fileID: 11400000, guid: e5947e124610c804489eb652bb7dd18e, type: 2}
