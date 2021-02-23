@@ -36,7 +36,7 @@ namespace OOPWithGeneric
         public string Title => "낚시대 상점";
         public FishingRodShopModel()
         {
-            items = new List<IFishingGadget>(){new FishingRodGadget(), new FishingRodGadget(), new FishingRodGadget()};
+            items = new List<IFishingGadget>(){new FishingLineGadget(), new FishingRodGadget(), new FishingRodGadget()};
         }
     }
 
@@ -54,7 +54,16 @@ namespace OOPWithGeneric
         public string Title => "낚시릴 상점";
         public FishingWheelShopModel()
         {
-            items = new List<IFishingGadget>(){new FishingWheelGadget(), new FishingWheelGadget(), new FishingWheelGadget()};
+            items = new List<IFishingGadget>(){new FishingWheelGadget(), new FishingWheelGadget(), new FishingWheelGadget(), new FishingMotorWheelGadget()};
+        }
+    }
+
+    public class FishingLureShopModel : BaseShopModel<FishingLureGadget>, IShop
+    {
+        public string Title => "낚시루어 상점";
+        public FishingLureShopModel()
+        {
+            items = new List<IFishingGadget>(){new FishingLureGadget(), new FishingLureGadget(), new FishingLureGadget()};
         }
     }
 }

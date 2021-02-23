@@ -21,5 +21,11 @@ namespace OOPWithGeneric
             var monoShop = Instantiate<RefactoringMonoShop>(monoShopPrefab, transform);
             monoShop.Init<FishingWheelShopModel>();
         }
+
+        public void OnClickedFishingLureShop()
+        {
+            var monoShop = Instantiate<RefactoringMonoShop>(monoShopPrefab, transform);
+            monoShop.Init<FishingLureShopModel>();
+        }
     }
 }
