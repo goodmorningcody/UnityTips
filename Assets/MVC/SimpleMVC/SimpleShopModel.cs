@@ -1,14 +1,18 @@
 namespace MVC
 {
-    public interface ShopModelChangeListener
+    public interface IObservableModle
     {
-        void OnChangedShopModel(SimpleShopModel model);
+    }
+
+    public interface ModelObserverable<T> where T : IObservableModle
+    {
+        void OnChanged(T model);
     }
     
-    public class SimpleShopModel
+    public class SimpleShopModel : IObservableModle
     {
         public ShopTab SelectedTab { get; private set; }
-        private ShopModelChangeListener listener = null;
+        private ModelObserverable<SimpleShopModel> observer = null;
 
         public string ShopTitle
         {
@@ -28,16 +32,16 @@ namespace MVC
             }
         }
 
-        public SimpleShopModel(ShopModelChangeListener listener)
+        public SimpleShopModel(ModelObserverable<SimpleShopModel> observer)
         {
-            this.listener = listener;
+            this.observer = observer;
             ChangeShopTab(SelectedTab);
         }
 
         public void ChangeShopTab(ShopTab clickedShopTab)
         {
             SelectedTab = clickedShopTab;
-            listener.OnChangedShopModel(this);
+            observer.OnChanged(this);
         }
     }
 }
