@@ -1,9 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using ReferenceAndEventDemo;
 
 namespace MVC
 {
+    public struct DestroyedShop : ReferenceAndEventDemo.Event
+    {
+    }
     public class Shop : MonoBehaviour, IObserver<EventPayload>
     {
         [SerializeField] private Text shopTitle = null;
@@ -17,6 +21,8 @@ namespace MVC
         public void OnClickedClose()
         {
             Destroy(gameObject);
+            this.Emit(new DestroyedShop());
+
         }
 
         public void OnCompleted()
@@ -33,6 +39,7 @@ namespace MVC
         public void OnNext(EventPayload value)
         {
             Debug.Log("called OnNext in Shop");
+            // this.shopTitle.text = shopTitle;
         }
     }
 }

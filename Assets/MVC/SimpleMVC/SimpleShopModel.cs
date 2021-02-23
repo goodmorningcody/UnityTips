@@ -1,18 +1,25 @@
 namespace MVC
 {
-    public interface IObservableModle
+    public interface IObservableGetter
     {
-    }
-
-    public interface ModelObserverable<T> where T : IObservableModle
-    {
-        void OnChanged(T model);
     }
     
-    public class SimpleShopModel : IObservableModle
+
+    public interface ModelObserverable<T> where T : IObservableGetter
+    {
+        void OnChanged(T modelGetter);
+    }
+
+    public interface SimpleShopModelGetter : IObservableGetter
+    {
+        ShopTab SelectedTab { get; }
+        string ShopTitle { get; }
+    }
+    
+    public class SimpleShopModel : IObservableGetter, SimpleShopModelGetter
     {
         public ShopTab SelectedTab { get; private set; }
-        private ModelObserverable<SimpleShopModel> observer = null;
+        private ModelObserverable<SimpleShopModelGetter> observer = null;
 
         public string ShopTitle
         {
@@ -32,7 +39,7 @@ namespace MVC
             }
         }
 
-        public SimpleShopModel(ModelObserverable<SimpleShopModel> observer)
+        public SimpleShopModel(ModelObserverable<SimpleShopModelGetter> observer)
         {
             this.observer = observer;
             ChangeShopTab(SelectedTab);

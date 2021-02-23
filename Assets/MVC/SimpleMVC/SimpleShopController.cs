@@ -5,7 +5,7 @@ using ReferenceAndEventDemo;
 
 namespace MVC
 {
-    public class SimpleShopController : MonoBehaviour, MonoEventListener, ModelObserverable<SimpleShopModel>
+    public class SimpleShopController : MonoBehaviour, MonoEventListener, ModelObserverable<SimpleShopModelGetter>
     {
         private SimpleShopModel model = null;
 
@@ -22,12 +22,12 @@ namespace MVC
             }
         }
 
-        public void OnChanged(SimpleShopModel model)
+        public void OnChanged(SimpleShopModelGetter getter)
         {
             //WARN : model.ChangeShopTab 호출 할 수 있는데 어떻게 고치면 좋을까?
             var shop = GetComponentInChildren<Shop>();
-            shop.Refresh(model.ShopTitle);
-            GetComponentsInChildren<ShopTabButton>().ToList().ForEach((shopTabButton) => shopTabButton.Refresh(model.SelectedTab));
+            shop.Refresh(getter.ShopTitle);
+            GetComponentsInChildren<ShopTabButton>().ToList().ForEach((shopTabButton) => shopTabButton.Refresh(getter.SelectedTab));
         }
     }
 }
