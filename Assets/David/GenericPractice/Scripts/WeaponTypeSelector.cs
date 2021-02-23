@@ -23,22 +23,22 @@ namespace DavidPractice
         }
         public void OnClickWeaponTypeSword()
         {
-            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<TypeSword>());
+            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<WeaponSword>());
         }
 
         public void OnClickWeaponTypeBow()
         {
-            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<TypeBow>());
+            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<WeaponBow>());
         }
 
         public void OnClickWeaponTypeAx()
         {
-            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<TypeAx>());
+            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<WeaponAx>());
         }
 
         public void OnClickWeaponTypeWand()
         {
-            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<TypeWand>());
+            EventDispatcher.Emit(this, new SelectWeaponTypeEvent<WeaponWand>());
         }
 
         public void OnClickBack()

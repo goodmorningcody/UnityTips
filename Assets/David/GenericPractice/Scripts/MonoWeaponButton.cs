@@ -12,11 +12,11 @@ namespace DavidPractice
 
         public void ButtonInit<T>(T weaponGadget) where T : IWeaponGadget
         {
-            txt_weaponName.text = weaponGadget.ItemName;
+            txt_weaponName.text = weaponGadget.weapon.GetWeaponName();
 
             GetComponent<Button>().onClick.AddListener(() =>
             {
-                EventDispatcher.Emit(this, new SelectWeaponGadgetEvent<T>(weaponGadget.Index));
+                EventDispatcher.Emit(this, new SelectWeaponGadgetEvent<T>(weaponGadget.weapon.GetIndex()));
             });
 
         }

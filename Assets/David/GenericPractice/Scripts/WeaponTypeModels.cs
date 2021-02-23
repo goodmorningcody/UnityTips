@@ -16,11 +16,11 @@ namespace DavidPractice
         protected List<IWeaponGadget> items = new List<IWeaponGadget>();
     }
 
-    public class TypeSword : BaseWeaponType<SwordGadget>, IWeaponType
+    public class WeaponSword : BaseWeaponType<SwordGadget>, IWeaponType
     {
         public string WeaponTypeName => "Sword";
 
-        public TypeSword(List<Sword> swords)
+        public WeaponSword(List<Sword> swords)
         {
             foreach (var sword in swords)
             {
@@ -29,11 +29,11 @@ namespace DavidPractice
         }
     }
 
-    public class TypeBow : BaseWeaponType<BowGadget>, IWeaponType
+    public class WeaponBow : BaseWeaponType<BowGadget>, IWeaponType
     {
         public string WeaponTypeName => "Bow";
 
-        public TypeBow(List<Bow> bows)
+        public WeaponBow(List<Bow> bows)
         {
             foreach (var bow in bows)
             {
@@ -42,11 +42,11 @@ namespace DavidPractice
         }
     }
 
-    public class TypeAx : BaseWeaponType<AxGadget>, IWeaponType
+    public class WeaponAx : BaseWeaponType<AxGadget>, IWeaponType
     {
         public string WeaponTypeName => "Ax";
 
-        public TypeAx(List<Ax> axes)
+        public WeaponAx(List<Ax> axes)
         {
             foreach (var ax in axes)
             {
@@ -55,11 +55,11 @@ namespace DavidPractice
         }
     }
 
-    public class TypeWand : BaseWeaponType<WandGadget>, IWeaponType
+    public class WeaponWand : BaseWeaponType<WandGadget>, IWeaponType
     {
         public string WeaponTypeName => "Wand";
 
-        public TypeWand(List<Wand> wands)
+        public WeaponWand(List<Wand> wands)
         {
             foreach (var wand in wands)
             {

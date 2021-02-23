@@ -25,10 +25,10 @@ namespace DavidPractice
         [SerializeField] private ScrollRect scrollRect_skill;
 
         //Initialize weapons
-        TypeSword typeSword;
-        TypeBow typeBow;
-        TypeAx typeAx;
-        TypeWand typeWand;
+        WeaponSword weaponSword;
+        WeaponBow weaponBow;
+        WeaponAx weaponAx;
+        WeaponWand weaponWand;
 
         private void Start()
         {
@@ -37,10 +37,10 @@ namespace DavidPractice
 
         void Initialize()
         {
-            typeSword = new TypeSword(weaponWiki.Swords);
-            typeBow = new TypeBow(weaponWiki.Bows);
-            typeAx = new TypeAx(weaponWiki.Axes);
-            typeWand = new TypeWand(weaponWiki.Wands);
+            weaponSword = new WeaponSword(weaponWiki.Swords);
+            weaponBow = new WeaponBow(weaponWiki.Bows);
+            weaponAx = new WeaponAx(weaponWiki.Axes);
+            weaponWand = new WeaponWand(weaponWiki.Wands);
         }
 
         public void OnEventHandle(Event param)
@@ -66,21 +66,21 @@ namespace DavidPractice
 
         void HandleWeaponTypeEvent(Event param)
         {
-            if (param is SelectWeaponTypeEvent<TypeSword>)
+            if (param is SelectWeaponTypeEvent<WeaponSword>)
             {
-                InstantiateMonoWeaponButtons<SwordGadget>(typeSword);
+                InstantiateMonoWeaponButtons<SwordGadget>(weaponSword);
             }
-            else if (param is SelectWeaponTypeEvent<TypeBow>)
+            else if (param is SelectWeaponTypeEvent<WeaponBow>)
             {
-                InstantiateMonoWeaponButtons<BowGadget>(typeBow);
+                InstantiateMonoWeaponButtons<BowGadget>(weaponBow);
             }
-            else if (param is SelectWeaponTypeEvent<TypeAx>)
+            else if (param is SelectWeaponTypeEvent<WeaponAx>)
             {
-                InstantiateMonoWeaponButtons<AxGadget>(typeAx);
+                InstantiateMonoWeaponButtons<AxGadget>(weaponAx);
             }
-            else if (param is SelectWeaponTypeEvent<TypeWand>)
+            else if (param is SelectWeaponTypeEvent<WeaponWand>)
             {
-                InstantiateMonoWeaponButtons<WandGadget>(typeWand);
+                InstantiateMonoWeaponButtons<WandGadget>(weaponWand);
             }
 
             weaponTypeSelector.ShowWeaponDisplay();
