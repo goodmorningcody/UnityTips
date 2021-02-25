@@ -15,25 +15,27 @@ public class Target : MonoBehaviour
         for (int i = 2; i < 5; i++)
         {
             transform.localScale = new Vector3(i, i, i);
-            Thread.Sleep(500);
+            Thread.Sleep(1000);
         }
         Debug.Log("[Target] Finished ScaleUpWithBlocking");
     }
 
-    public IEnumerator ScaleUpWithNonBlocking()
+    public IEnumerator ScaleUpWithNonBlocking(Action<bool> onResult)
     {
+        yield return null;
         transform.localScale = Vector3.one;
         Debug.Log("[Target] Start ScaleUpWithNonBlocking");
-        yield return null;
         for (int i = 2; i < 5; i++)
         {
             transform.localScale = new Vector3(i, i, i);
             yield return new WaitForSeconds(0.5f);
+            // Thread.Sleep(1000);
         }
         Debug.Log("[Target] Finished ScaleUpWithNonBlocking");
+        onResult(true);
     }
 
-    public bool ScaleUpWithSync()
+    public void ScaleUpWithSync()
     {
         transform.localScale = Vector3.one;
         Debug.Log("[Target] Start ScaleUpWithBlocking");
@@ -43,8 +45,10 @@ public class Target : MonoBehaviour
             Thread.Sleep(500);
         }
         Debug.Log("[Target] Finished ScaleUpWithBlocking");
-        return true;
+        isFinished = true;
     }
+
+    public bool isFinished = false;
 
     public void ScaleUpWithAsync(Action onCompleted)
     {
@@ -58,7 +62,6 @@ public class Target : MonoBehaviour
         Debug.Log("[Target] Finished ScaleUpWithBlocking");
         onCompleted();
     }
-
     
     public void ScaleUpWithNonBlockingAndThread()
     {
@@ -69,7 +72,7 @@ public class Target : MonoBehaviour
             {
                 Debug.Log(i);
                 // transform.localScale = new Vector3(i, i, i);
-                Thread.Sleep(500);
+                // Thread.Sleep(500);
             }
             Debug.Log("[Target] Finished ScaleUpWithNonBlocking2");
         });
@@ -77,10 +80,10 @@ public class Target : MonoBehaviour
         scaleUpThread.Start();
     }
 
-    public void ScaleUpWithNonBlockingAndTask()
+    public async Task ScaleUpWithNonBlockingAndTask()
     {
         transform.localScale = Vector3.one;
-        Task.Run(() => {
+        await Task.Run(() => {
             Debug.Log("[Target] Start ScaleUpWithNonBlocking3");
             for (int i = 2; i < 5; i++)
             {
@@ -94,7 +97,28 @@ public class Target : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(CoroutinesCompletedTest());
+        // StartCoroutine(CoroutinesCompletedTest());
+        StartCoroutine(Go());
+    }
+
+    IEnumerator Go()
+    {
+        yield return StartCoroutine(MoveCoroutine());
+        yield return StartCoroutine(ScaleCoroutine());
+    }
+
+    public IEnumerator MoveCoroutine()
+    {        
+        yield return null;
+        Debug.Log("이동");
+        yield return new WaitForSeconds(3f);
+    }
+
+    public IEnumerator ScaleCoroutine()
+    {        
+        yield return null;
+        Debug.Log("크기");
+        yield return new WaitForSeconds(2f);
     }
 
     public IEnumerator CoroutinesCompletedTest()

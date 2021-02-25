@@ -29,8 +29,8 @@ public class AsyncController : MonoBehaviour
     public void OnStartScaleUpWithNonBlocking()
     {
         Debug.Log("[NonBlocking] I will request scale up to the Target");
-        var method = target.ScaleUpWithNonBlocking();
-        StartCoroutine(method);
+        StartCoroutine(target.ScaleUpWithNonBlocking((result) => {
+        }));
         Debug.Log("[NonBlocking] Finished scale up? or yet? It doesn't matter, I will process other task");
     }
 
@@ -39,7 +39,8 @@ public class AsyncController : MonoBehaviour
     public void OnStartScaleUpWithSync()
     {
         Debug.Log("[Blocking] I will request scale up to the Target");
-        if ( target.ScaleUpWithSync() )
+        target.ScaleUpWithSync();
+        if ( target.isFinished )
         {
             Debug.Log("[Blocking] It finished to scale up so I will process other task");
         }
@@ -49,10 +50,12 @@ public class AsyncController : MonoBehaviour
     // 0. 함수가 처리된 결과를 함수 호출자가 신경쓰지 않고, 콜백을 통해 처리하는 것
     //    - 처리가 완료되면 어떻게 처리할지를 함수 객체를 통해 함수를 호출하며 전달해 준 것
     //      그러므로 신경쓰고 있는 상태는 아님
+    private bool isTest = false;
     public void OnStartScaleUpWithAsync()
     {
         Debug.Log("[Blocking] I will request scale up to the Target");
         target.ScaleUpWithAsync(() => {
+            Debug.Log(isTest); //capturing
             Debug.Log("[Blocking] It finished to scale up so I will process other task");
         });
     }
@@ -83,9 +86,10 @@ public class AsyncController : MonoBehaviour
     }
 
     // 문제1. A가 3초 간 이동 후 B를 2초 간 크기를 키우려면 어떻게 해야 할까?
-    //       > 콜백의 콜백? yield return 코루틴 혹은 yield return new WaitUntil 등을 사용해 
+    //       > 콜백의 콜백?
     // 문제2. 3초 간 이동, 2초 간 크기를 키운 뒤 모두 끝나면 어떤 처리를 해야 한다면?
     //       > 코루틴이 모두 완료됐는지 감시하는 정도는 가능
+    //       > yield return 코루틴 혹은 yield return new WaitUntil 등을 사용해 
     // 문제3. 비동기 네트워크 요청을 효과적으로 하려면?
     //       > A API 요청, B API 요청을 비동기로 요청 후 모두 완료된 경우 처리하게 하려면? > Task를 이용하면됨 WhenAll
 }
